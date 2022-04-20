@@ -1,8 +1,12 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import "@fortawesome/fontawesome-svg-core/styles.css"; 
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
+  
   return (
     <>
       <Head>
@@ -14,7 +18,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
       </Head>
       <div>

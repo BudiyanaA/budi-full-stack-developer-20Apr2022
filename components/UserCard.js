@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 function UserCard() {
   return (
     <div class="container lg:w-1/4 xl:w-2/7 sm:w-full md:w-2/3 m-4 bg-white shadow-lg transform duration-200 easy-in-out">
@@ -16,12 +18,11 @@ function UserCard() {
         <hr class="mt-2" />
         <div class="flex justify-center bg-gray-50 ">
           <div class="text-center p-4 hover:bg-gray-100 cursor-pointer">
-            <a
-            href="javascript:void(0)"
-            class="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:border-primary hover:bg-primary hover:text-white transition"
-            >
-              View Details
-            </a>
+            <Link href="/resumes/id">
+              <button class="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:border-primary hover:bg-primary hover:text-white transition">
+                View Details
+              </button>
+            </Link>
           </div>
         </div>
       </div>
