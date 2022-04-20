@@ -80,17 +80,19 @@ function Sidebar({ children }) {
                 </Link>
               </div>
               <div>
-                <button 
-                  className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
-                  onClick={() => {}}
-                >
-                  <span className="capitalize text-left text-gray-600 group-hover:text-white">
-                    <FontAwesomeIcon icon={faArrowRightFromBracket} />
-                  </span>
-                  <p className="capitalize text-left text-gray-600 group-hover:text-white">
-                    Logout
-                  </p>
-                </button>
+                <Link href="/">
+                  <button 
+                    className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
+                    onClick={() => {}}
+                  >
+                    <span className="capitalize text-left text-gray-600 group-hover:text-white">
+                      <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                    </span>
+                    <p className="capitalize text-left text-gray-600 group-hover:text-white">
+                      Logout
+                    </p>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

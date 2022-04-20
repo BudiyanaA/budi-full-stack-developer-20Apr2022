@@ -1,21 +1,28 @@
-import { faBolt } from "@fortawesome/free-solid-svg-icons";
+import { 
+  faUser, 
+  faAddressBook,
+  faBusinessTime,
+  faComputer,
+  faBolt,
+  faSchool,
+} from "@fortawesome/free-solid-svg-icons";
 
 const items = [
   {
     title: 'Basic',
-    icon: faBolt,
+    icon: faUser,
   },
   {
     title: 'Contact',
-    icon: faBolt,
+    icon: faAddressBook,
   },
   {
     title: 'Experience',
-    icon: faBolt,
+    icon: faBusinessTime,
   },
   {
     title: 'Projects',
-    icon: faBolt,
+    icon: faComputer,
   },
   {
     title: 'Skills',
@@ -23,7 +30,7 @@ const items = [
   },
   {
     title: 'Education',
-    icon: faBolt,
+    icon: faSchool,
   },
 ];
 

@@ -35,7 +35,7 @@ function ResumeContact({ field, value }) {
             rel="noopener noreferrer"
             title="website"
           >
-            Personal Site
+            {value}
           </a>
         </>
       )}
