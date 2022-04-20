@@ -4,7 +4,7 @@ import {
 } from '../middleware/validation-handler';
 import { check } from 'express-validator';
 import { auth, firestore } from '../config/firebase-admin';
-import firebase from '../config/firebase';
+// import firebase from '../config/firebase';
 
 export const register = async (req, res, next) => {
   await validationHandler(
@@ -53,33 +53,33 @@ export const register = async (req, res, next) => {
   }
 };
 
-export const login = async (req, res, next) => {
-  await validationHandler(
-    req,
-    res,
-    validations([
-      check('email', 'Please enter a valid email address').isEmail(),
-      check('password', 'Password is required').not().isEmpty(),
-    ])
-  );
+// export const login = async (req, res, next) => {
+//   await validationHandler(
+//     req,
+//     res,
+//     validations([
+//       check('email', 'Please enter a valid email address').isEmail(),
+//       check('password', 'Password is required').not().isEmpty(),
+//     ])
+//   );
 
-  const { email, password } = req.body;
+//   const { email, password } = req.body;
 
-  try {
-    await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+//   try {
+//     await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
 
-    // Login process begin
-    const { user } = await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password);
+//     // Login process begin
+//     const { user } = await firebase
+//       .auth()
+//       .signInWithEmailAndPassword(email, password);
 
-    const { token } = await user.getIdTokenResult();
+//     const { token } = await user.getIdTokenResult();
 
-    return res.status(200).json({
-      success: true,
-      token: token,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
+//     return res.status(200).json({
+//       success: true,
+//       token: token,
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// };

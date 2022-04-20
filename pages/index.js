@@ -7,18 +7,18 @@ export default function Home() {
     <main>
       <Nav />
       <Hero />
-      <section class="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
-        <div id="catalog" class="container">
-          <div class="flex flex-wrap justify-center -mx-4">
-            <div class="w-full px-4">
-              <div class="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
-                <span class="font-semibold text-lg text-primary mb-2 block">
+      <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
+        <div id="catalog" className="container">
+          <div className="flex flex-wrap justify-center -mx-4">
+            <div className="w-full px-4">
+              <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
+                <span className="font-semibold text-lg text-primary mb-2 block">
                   Our Collections
                 </span>
-                <h2 class="font-bold text-3xl sm:text-4xl md:text-[40px] text-dark mb-4" >
+                <h2 className="font-bold text-3xl sm:text-4xl md:text-[40px] text-dark mb-4" >
                   Recently Public Resumes
                 </h2>
-                <p class="text-base text-body-color">
+                <p className="text-base text-body-color">
                   There are many variations of passages of Lorem Ipsum
                   available but the majority have suffered alteration in some
                   form.
@@ -26,7 +26,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div class="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center">
             <UserCard />
             <UserCard />
             <UserCard />

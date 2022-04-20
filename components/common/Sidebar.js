@@ -65,7 +65,7 @@ function Sidebar({ children }) {
                 );
               })}
               <div>
-                <Link href="/resumes/id">
+                <Link href="/resumes/id" passHref={true}>
                   <button 
                     className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
                     onClick={() => {}}
@@ -80,7 +80,7 @@ function Sidebar({ children }) {
                 </Link>
               </div>
               <div>
-                <Link href="/">
+                <Link href="/" passHref={true}>
                   <button 
                     className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
                     onClick={() => {}}

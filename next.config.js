@@ -2,7 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.pravatar.cc']
+    domains: [
+      'i.pravatar.cc', 
+      'tuk-cdn.s3.amazonaws.com',
+      'images.unsplash.com',
+      'tailus.io',
+    ]
   },
 }
 
