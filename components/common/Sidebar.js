@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket, faFile } from "@fortawesome/free-solid-svg-icons";
 import items from '../../constants/sidebar';
 import { useAppState } from '../../provider';
+import Link from 'next/link'
 
 function Sidebar({ children }) {
   const router = useRouter();
@@ -64,17 +65,19 @@ function Sidebar({ children }) {
                 );
               })}
               <div>
-                <button 
-                  className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
-                  onClick={() => {}}
-                >
-                  <span className="capitalize text-left text-gray-600 group-hover:text-white">
-                    <FontAwesomeIcon icon={faFile} />
-                  </span>
-                  <p className="capitalize text-left text-gray-600 group-hover:text-white">
-                    My Resume
-                  </p>
-                </button>
+                <Link href="/resumes/id">
+                  <button 
+                    className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
+                    onClick={() => {}}
+                  >
+                    <span className="capitalize text-left text-gray-600 group-hover:text-white">
+                      <FontAwesomeIcon icon={faFile} />
+                    </span>
+                    <p className="capitalize text-left text-gray-600 group-hover:text-white">
+                      My Resume
+                    </p>
+                  </button>
+                </Link>
               </div>
               <div>
                 <button 

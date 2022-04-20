@@ -1,6 +1,6 @@
 import { useAppState } from '../../provider';
 import Sidebar from '../../components/common/Sidebar';
-import { Basic, Contact } from '../../containers';
+import { Basic, Contact, Experience } from '../../containers';
 
 export default function Profile() {
   const { sidebarActive } = useAppState();
@@ -12,6 +12,9 @@ export default function Profile() {
       break;
     case 1:
       RenderMenu = Contact;
+      break;
+    case 2:
+      RenderMenu = Experience;
       break;
     default:
       new Error('Render menu undefined!');
