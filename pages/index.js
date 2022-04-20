@@ -1,12 +1,14 @@
 import Hero from '../components/Hero';
 import UserCard from '../components/UserCard';
+import Nav from '../components/Nav';
 
 export default function Home() {
   return (
     <main>
+      <Nav />
       <Hero />
       <section class="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
-        <div class="container">
+        <div id="catalog" class="container">
           <div class="flex flex-wrap justify-center -mx-4">
             <div class="w-full px-4">
               <div class="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">

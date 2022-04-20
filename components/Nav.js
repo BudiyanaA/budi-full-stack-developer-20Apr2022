@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 function Nav() {
   return (
     <nav class="w-full border-b py-5">
@@ -9,9 +11,11 @@ function Nav() {
             alt="logo"
           />
         </div>
-        <button class="focus:outline-none lg:text-lg lg:font-bold focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 hidden md:block bg-transparent transition duration-150 ease-in-out hover:bg-gray-200 rounded border border-indigo-700 text-indigo-700 px-4 sm:px-8 py-1 sm:py-3 text-sm">
-          Sign In
-        </button>
+        <Link href="/login">
+          <button class="focus:outline-none lg:text-lg lg:font-bold focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 hidden md:block bg-transparent transition duration-150 ease-in-out hover:bg-gray-200 rounded border border-indigo-700 text-indigo-700 px-4 sm:px-8 py-1 sm:py-3 text-sm">
+            Sign In
+          </button>
+        </Link>
       </div>
     </nav>
   );
