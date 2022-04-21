@@ -31,7 +31,7 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap justify-center">
             {data && data.map((user, index) => (
-              <UserCard user={user} />
+              <UserCard key={index} user={user} />
             ))}
           </div>
         </div>
