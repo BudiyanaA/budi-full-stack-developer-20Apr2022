@@ -5,9 +5,9 @@ function ResumeExperience ({ data }) {
       {data &&
         data.map((item, i) => (
           <article className="my-5" key={`${item.company}-${i}`}>
-            <h2 className="item-header">{item.role}</h2>
+            <h2 className="item-header">{item.title}</h2>
             <h3 className="item-sub">
-              {item.company} | {item.start} - {item.end || 'PRESENT'}
+              {item.company} | {item.start_date} - {item.end_date || 'PRESENT'}
             </h3>
             <p className="py-6">{item.description}</p>
           </article>

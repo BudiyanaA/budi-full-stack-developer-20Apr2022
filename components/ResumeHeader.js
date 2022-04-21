@@ -1,6 +1,6 @@
 import ResumeContact from './ResumeContact';
 
-function ResumeHeader({ name, role, contacts }) {
+function ResumeHeader({ name, age, contacts }) {
   return (
     <header className="border-b border-neutral-300 pb-2 md:flex items-center justify-between">
       <div>
@@ -8,7 +8,7 @@ function ResumeHeader({ name, role, contacts }) {
           {name}
         </h1>
         <h2 className="font-light text-lg md:text-2xl text-primary-900 leading-relaxed tracking-widest">
-          {role}
+          Age: {age}
         </h2>
       </div>
       <div className="mt-5 md:mt-0 md:border-l md:border-neutral-300 md:pl-4">

@@ -1,8 +1,11 @@
 import Hero from '../components/Hero';
 import UserCard from '../components/UserCard';
 import Nav from '../components/Nav';
+import useSWR from 'swr';
 
 export default function Home() {
+  const { data, mutate } = useSWR('/api/users');
+
   return (
     <main>
       <Nav />
@@ -27,12 +30,9 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-wrap justify-center">
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
+            {data && data.map((user, index) => (
+              <UserCard user={user} />
+            ))}
           </div>
         </div>
       </section>
