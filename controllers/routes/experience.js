@@ -6,3 +6,95 @@ import { check } from 'express-validator';
 import { auth, firestore } from '../config/firebase-admin';
 import firebase from '../config/firebase';
 
+export const createExperience = async (req, res, next) => {
+  // await validationHandler(
+  //   req,
+  //   res,
+  //   validations([
+  //     check('company', 'Full name is required!').notEmpty(),
+  //     check('email', 'Invalid email address').isEmail().notEmpty(),
+  //     check('password', 'Title is required').notEmpty(),
+  //   ])
+  // );
+
+  const { 
+    company, 
+    title, 
+    start_date,
+    end_date,
+    description, 
+  } = req.body;
+
+  const user = req.session.get('user');
+
+  try {
+
+    const userRef = await firestore.collection('users').doc(user.uid);
+    const userGet = await userRef.get();
+    const userData = await userGet.data();
+
+    await userRef.update({
+      experience: [
+        ...userData.experience,
+        {
+          company, 
+          title, 
+          start_date,
+          end_date,
+          description, 
+        }
+      ],
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: `Add Experience successfully`,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getAllExperience = async (req, res, next) => {
+
+  const user = req.session.get('user');
+
+  try {
+    const userRef = await firestore.collection('users').doc(user.uid);
+    const userGet = await userRef.get();
+    const userData = await userGet.data();
+
+    return res.status(200).json({
+      success: true,
+      experience: userData.experience
+    });
+    
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const deleteExperience = async (req, res, next) => {
+  const { index } = req.query;
+  const user = req.session.get('user');
+
+  try {
+    const userRef = await firestore.collection('users').doc(user.uid);
+    const userGet = await userRef.get();
+    const userData = await userGet.data();
+
+    let list = [...userData.experience];
+    list.splice(index ,1)
+
+    await userRef.update({
+      experience: list,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: `Experience has been deleted!`,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
