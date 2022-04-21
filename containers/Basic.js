@@ -1,9 +1,18 @@
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import fetcher from '../utils/fetcher';
 import router from 'next/router';
+import Image from 'next/image';
+import toBase64 from '../utils/toBase64';
 
 function Basic({ user, mutateUser }) {
   
+  const ref = useRef();
+  const [thumbnail, setThumbnail] = useState('');
+  const [photos, setPhotos] = useState({
+    name: '',
+    source: '',
+  });
+
   const [fields, setFields] = useState({
     photos: user?.isLoggedIn && user.photos,
     fullname: user?.isLoggedIn && user.fullname,
@@ -13,6 +22,37 @@ function Basic({ user, mutateUser }) {
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
+
+  const handleFileThumbnail = async (file) => {
+    const source = await toBase64(file);
+    setPhotos({ name: file.name, source: source });
+  };
+
+  const handleChangeFile = (e) => {
+    const file = e.target.files[0];
+    // setError('');
+
+    // if ((file && file.size / 1024 / 1024) > 3) {
+    //   ref.current.value = '';
+    //   return setError('File too large, max 3mb');
+    // }
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      handleFileThumbnail(file);
+      setThumbnail(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.error(error);
+    };
+  };
+
+  useEffect(() => {
+    setThumbnail(
+      'https://firebasestorage.googleapis.com/v0/b/madava-project.appspot.com/o/public%2Fimages%2Fthumbnail-default.jpg?alt=media&token=550b5331-54db-4fea-91b7-963bb1054b50'
+    );
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +64,11 @@ function Basic({ user, mutateUser }) {
       const result = await fetcher('/api/auth/profile', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(fields),
+        body: JSON.stringify({
+          photos: photos,
+          fullname: fields.fullname,
+          age: fields.age
+        }),
       });
 
       // page will be reload
@@ -59,16 +103,33 @@ function Basic({ user, mutateUser }) {
             >
               Foto:
             </label>
+            <div className='w-1/2 h-auto mt-1'>
+              {!thumbnail ? (
+                <div className='bg-gray-300 w-8 h-8 rounded-md px-1 py-1 animate-pulse' />
+              ) : (
+                <Image
+                  width={200}
+                  height={200}
+                  src={thumbnail}
+                  alt='thumbnail'
+                  layout='intrinsic'
+                  objectFit='cover'
+                  quality={65}
+                />
+              )}
+            </div>
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <i class="fas fa-portrait text-blue-500"></i>
               </div>
               <input
-                id="email"
+                id="photos"
                 type="file"
-                name="email"
+                name="photos"
                 class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                 placeholder="Enter your email"
+                onChange={handleChangeFile}
+                ref={ref}
               />
             </div>
           </div>

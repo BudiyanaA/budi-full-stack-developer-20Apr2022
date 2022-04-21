@@ -113,7 +113,7 @@ function Experience({ user, mutateUser }) {
           </div>
           <div class="mt-10">
             <form onSubmit={(e) => handleSubmit(e, index)}>
-              <div class="flex flex-col mb-5">
+              {/* <div class="flex flex-col mb-5">
                 <label
                   for="email"
                   class="mb-1 text-xs tracking-wide text-gray-600"
@@ -132,7 +132,7 @@ function Experience({ user, mutateUser }) {
                     placeholder="Enter your email"
                   />
                 </div>
-              </div>
+              </div> */}
               <div class="flex flex-col mb-5">
                 <label
                   for="email"
@@ -267,7 +267,7 @@ function Experience({ user, mutateUser }) {
         </div>
         <div class="mt-10">
           <form onSubmit={handleSubmitNew}>
-            <div class="flex flex-col mb-5">
+            {/* <div class="flex flex-col mb-5">
               <label
                 for="email"
                 class="mb-1 text-xs tracking-wide text-gray-600"
@@ -286,7 +286,7 @@ function Experience({ user, mutateUser }) {
                   placeholder="Enter your email"
                 />
               </div>
-            </div>
+            </div> */}
             <div class="flex flex-col mb-5">
               <label
                 for="email"

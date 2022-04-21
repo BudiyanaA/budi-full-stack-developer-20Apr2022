@@ -178,15 +178,30 @@ export const updateProfile = async (req, res, next) => {
 
   const body = req.body;
   const user = req.session.get('user');
-  console.log("body")
-console.log(body)
+
   try {
     const userRef = await firestore.collection('users').doc(user.uid);
 
-    await userRef.update({
-      ...body
-    });
-
+    if (body.photos && body.photos.name != '') {
+      // Init storage ref
+      const storageRef = firebase.storage().ref(`photos/` + body.photos.name);
+      await storageRef.putString(body.photos.source, 'data_url');
+      
+      const downloadURL = await storageRef.getDownloadURL();
+      
+      await userRef.update({
+        photos: downloadURL,
+        fullname: body.fullname,
+        age: body.age,
+      });
+    } else {
+      if (body.photos) {
+        delete body.photos
+      }
+      await userRef.update({
+        ...body
+      });
+    }
     const snapshot = await userRef.get();
     const updatedUser = snapshot.data();
 
