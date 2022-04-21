@@ -3,10 +3,12 @@ import { onError, onNoMatch } from '../../../controllers/middleware/error-handle
 import { withSession } from '../../../controllers/middleware/session-handler';
 
 import {
-  login,
+  sessionLogin,
+  userLogout,
 } from '../../../controllers/routes/auth';
 
 export default withSession(
   nc({ onError, onNoMatch })
-    .post(login)
+    .post(sessionLogin)
+    .delete(userLogout)
 );

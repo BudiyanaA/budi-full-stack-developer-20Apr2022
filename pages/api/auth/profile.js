@@ -3,10 +3,10 @@ import { onError, onNoMatch } from '../../../controllers/middleware/error-handle
 import { withSession } from '../../../controllers/middleware/session-handler';
 
 import {
-  login,
+  profile,
 } from '../../../controllers/routes/auth';
 
 export default withSession(
   nc({ onError, onNoMatch })
-    .post(login)
+    .get(profile)
 );

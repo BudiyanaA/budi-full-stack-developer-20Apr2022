@@ -1,18 +1,39 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket, faFile } from "@fortawesome/free-solid-svg-icons";
 import items from '../../constants/sidebar';
 import { useAppState } from '../../provider';
 import Link from 'next/link'
+import fetcher from '../../utils/fetcher';
 
-function Sidebar({ children }) {
+function Sidebar({ children, user, mutateUser }) {
   const router = useRouter();
   const { setSidebarActive, sidebarActive } = useAppState();
+  const [message, setMessage] = useState('Message');
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   const handleClick = (index) => {
     setSidebarActive(index);
     router.push('/profile');
+  };
+  
+  const handleLogout = async (e) => {
+    e.preventDefault();
+
+    try {
+      await mutateUser(
+        fetcher(`/api/auth/session`, {
+          method: 'DELETE',
+        })
+      );
+    } catch (err) {
+      console.error(err);
+
+      setMessage(err.data.error.message);
+      setIsFeedbackOpen(true);
+    }
   };
   
   return (
@@ -83,7 +104,7 @@ function Sidebar({ children }) {
                 <Link href="/" passHref={true}>
                   <button 
                     className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
-                    onClick={() => {}}
+                    onClick={handleLogout}
                   >
                     <span className="capitalize text-left text-gray-600 group-hover:text-white">
                       <FontAwesomeIcon icon={faArrowRightFromBracket} />
