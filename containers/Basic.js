@@ -91,6 +91,7 @@ function Basic({ user, mutateUser }) {
                 placeholder="Enter your fullname"
                 value={fields.fullname}
                 onChange={handleChange}
+                required={true}
               />
             </div>
           </div>
@@ -113,6 +114,7 @@ function Basic({ user, mutateUser }) {
                 placeholder="Enter your age"
                 value={fields.age}
                 onChange={handleChange}
+                required={true}
               />
             </div>
           </div>

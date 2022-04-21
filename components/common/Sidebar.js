@@ -96,21 +96,23 @@ function Sidebar({ children, active, user, mutateUser }) {
                   </div>
                 );
               })}
-              <div>
-                <Link href="/resumes/id" passHref={true}>
-                  <button 
-                    className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
-                    onClick={() => {}}
-                  >
-                    <span className="capitalize text-left text-gray-600 group-hover:text-white">
-                      <FontAwesomeIcon icon={faFile} />
-                    </span>
-                    <p className="capitalize text-left text-gray-600 group-hover:text-white">
-                      My Resume
-                    </p>
-                  </button>
-                </Link>
-              </div>
+              {user && (
+                <div>
+                  <Link href={'/resumes/' + user.uid} passHref={true}>
+                    <button 
+                      className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
+                      onClick={() => {}}
+                    >
+                      <span className="capitalize text-left text-gray-600 group-hover:text-white">
+                        <FontAwesomeIcon icon={faFile} />
+                      </span>
+                      <p className="capitalize text-left text-gray-600 group-hover:text-white">
+                        My Resume
+                      </p>
+                    </button>
+                  </Link>
+                </div>
+              )}
               <div>
                   <button 
                     className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"

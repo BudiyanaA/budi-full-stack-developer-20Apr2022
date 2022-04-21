@@ -71,8 +71,9 @@ function Experience({ user, mutateUser }) {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, index) => {
     e.preventDefault();
+    
     mutateUser('/api/auth/profile', {}, false);
 
     try {
@@ -106,12 +107,12 @@ function Experience({ user, mutateUser }) {
     <div className="flex flex-wrap">
       {fields.experience && fields.experience.map((exp, index) => {
         return (
-          <div class="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-50 max-w-md m-4">
+        <div class="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-50 max-w-md m-4">
           <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
             Experience
           </div>
           <div class="mt-10">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e, index)}>
               <div class="flex flex-col mb-5">
                 <label
                   for="email"
@@ -151,6 +152,7 @@ function Experience({ user, mutateUser }) {
                     placeholder="Enter your company"
                     value={exp.company}
                     onChange={(e) => handleChange(e, index)}
+                    required={true}
                   />
                 </div>
               </div>
@@ -173,6 +175,7 @@ function Experience({ user, mutateUser }) {
                     placeholder="Enter your Job Title"
                     value={exp.title}
                     onChange={(e) => handleChange(e, index)}
+                    required={true}
                   />
                 </div>
               </div>
@@ -195,6 +198,7 @@ function Experience({ user, mutateUser }) {
                     placeholder="Enter your email"
                     value={exp.start_date}
                     onChange={(e) => handleChange(e, index)}
+                    required={true}
                   />
                 </div>
               </div>
@@ -239,6 +243,7 @@ function Experience({ user, mutateUser }) {
                     placeholder="Enter your job description"
                     value={exp.description}
                     onChange={(e) => handleChange(e, index)}
+                    required={true}
                   />
                 </div>
               </div>
@@ -301,6 +306,7 @@ function Experience({ user, mutateUser }) {
                   placeholder="Enter your company"
                   value={newFields.company}
                   onChange={handleChangeNew}
+                  required={true}
                 />
               </div>
             </div>
@@ -323,6 +329,7 @@ function Experience({ user, mutateUser }) {
                   placeholder="Enter your Job Title"
                   value={newFields.title}
                   onChange={handleChangeNew}
+                  required={true}
                 />
               </div>
             </div>
@@ -345,6 +352,7 @@ function Experience({ user, mutateUser }) {
                   placeholder="Enter your email"
                   value={newFields.start_date}
                   onChange={handleChangeNew}
+                  required={true}
                 />
               </div>
             </div>
@@ -389,6 +397,7 @@ function Experience({ user, mutateUser }) {
                   placeholder="Enter your job description"
                   value={newFields.description}
                   onChange={handleChangeNew}
+                  required={true}
                 />
               </div>
             </div>
