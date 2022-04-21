@@ -67,7 +67,7 @@ function LoginPage() {
       });
 
       await sessionRequest(res.token);
-      
+
       return mutateUser('/api/auth/profile');
     } catch (err) {
       setLoading(false);

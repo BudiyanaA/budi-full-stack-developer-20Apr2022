@@ -7,6 +7,7 @@ const nextConfig = {
       'tuk-cdn.s3.amazonaws.com',
       'images.unsplash.com',
       'tailus.io',
+      'firebasestorage.googleapis.com',
     ]
   },
 }

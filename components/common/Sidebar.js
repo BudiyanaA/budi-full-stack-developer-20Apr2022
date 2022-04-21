@@ -8,7 +8,7 @@ import { useAppState } from '../../provider';
 import Link from 'next/link'
 import fetcher from '../../utils/fetcher';
 
-function Sidebar({ children, user, mutateUser }) {
+function Sidebar({ children, active, user, mutateUser }) {
   const router = useRouter();
   const { setSidebarActive, sidebarActive } = useAppState();
   const [message, setMessage] = useState('Message');
@@ -31,23 +31,34 @@ function Sidebar({ children, user, mutateUser }) {
     } catch (err) {
       console.error(err);
 
-      setMessage(err.data.error.message);
-      setIsFeedbackOpen(true);
+      // setMessage(err.data.error.message);
+      // setIsFeedbackOpen(true);
     }
   };
   
+  const loading = !user?.isLoggedIn;
+
   return (
     <div className='flex flex-row'>
       <div className='w-1/4 border-r border-gray-400 min-h-screen flex flex-col justify-between py-5'>
         <div>
-          <div className='my-2 mx-4'>
-            <Image
-              src='https://i.pravatar.cc/1000'
-              alt='Workflow'
-              width={100}
-              height={100}
-            />
-          </div>
+          {loading ? (
+            <div className='animate-pulse px-3 py-3 bg-gray-300 h-16 rounded-md mx-4' />
+          ) : (
+            <>
+              <div className='my-2 mx-4'>
+                <Image
+                  src={user.photos}
+                  alt='Profile Picture'
+                  width={100}
+                  height={100}
+                />
+              </div>
+              <div className='mx-4'>
+                {user.username}
+              </div>
+            </>
+          )}
 
           <div className='my-9 mx-4'>
             <p className='text-gray-800 font-semibold'>Menu</p>
@@ -101,7 +112,6 @@ function Sidebar({ children, user, mutateUser }) {
                 </Link>
               </div>
               <div>
-                <Link href="/" passHref={true}>
                   <button 
                     className="group inline-flex w-full rounded-md px-2 py-2 gap-3 cursor-pointer hover:bg-secondary"
                     onClick={handleLogout}
@@ -113,7 +123,6 @@ function Sidebar({ children, user, mutateUser }) {
                       Logout
                     </p>
                   </button>
-                </Link>
               </div>
             </div>
           </div>

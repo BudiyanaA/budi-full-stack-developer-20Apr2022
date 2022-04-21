@@ -36,7 +36,7 @@ export const register = async (req, res, next) => {
     // Init user
     const setUser = {
       uid: userRecord.uid,
-      username: email,
+      username: username,
       email: email,
       experience: [],
     };
@@ -167,5 +167,50 @@ export const userLogout = async (req, res, next) => {
     });
   } catch (err) {
     next(err);
+  }
+};
+
+export const updateProfile = async (req, res, next) => {
+
+  const body = req.body;
+  const user = req.session.get('user');
+  console.log("body")
+console.log(body)
+  try {
+    const userRef = await firestore.collection('users').doc(user.uid);
+
+    await userRef.update({
+      ...body
+    });
+
+    const snapshot = await userRef.get();
+    const updatedUser = snapshot.data();
+
+    const userSession = {
+      isLoggedIn: true,
+      ...updatedUser,
+    };
+
+    req.session.unset('user');
+    req.session.set('user', userSession);
+    await req.session.save();
+
+    return res.status(200).json({
+      success: true,
+      message: `User updated successfully`,
+    });
+  } catch (err) {
+    switch (err.code) {
+      case 'auth/email-already-exists':
+        throw BadRequestError('Email already in use, change email address');
+      case 'auth/phone-number-already-exists':
+        throw BadRequestError(
+          'Phone number already exists, change another phone number'
+        );
+      case 'auth/invalid-phone-number':
+        throw BadRequestError('Phone number is invalid');
+      default:
+        next(err);
+    }
   }
 };
