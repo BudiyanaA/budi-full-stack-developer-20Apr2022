@@ -24,6 +24,7 @@ export const register = async (req, res, next) => {
   const { username, email, password } = req.body;
 
   try {
+
     // Create user
     const userRecord = await auth.createUser({
       email: email,
@@ -39,6 +40,9 @@ export const register = async (req, res, next) => {
       username: username,
       email: email,
       experience: [],
+      age: null,
+      photos: 'https://firebasestorage.googleapis.com/v0/b/resume-app-ea669.appspot.com/o/photos%2Fdefault.png?alt=media&token=68b0ff30-14ab-4d20-ad63-9d93858355df',
+      fullname: '',
     };
 
     // Store to firestore
