@@ -23,6 +23,7 @@ export const createExperience = async (req, res, next) => {
     start_date,
     end_date,
     description, 
+    logo,
   } = req.body;
 
   const user = req.session.get('user');
@@ -33,10 +34,15 @@ export const createExperience = async (req, res, next) => {
     const userGet = await userRef.get();
     const userData = await userGet.data();
 
+    const storageRef = firebase.storage().ref(`logo/` + logo.name);
+    await storageRef.putString(logo.source, 'data_url');
+    const downloadURL = await storageRef.getDownloadURL();
+
     await userRef.update({
       experience: [
         ...userData.experience,
         {
+          logo: downloadURL,
           company, 
           title, 
           start_date,

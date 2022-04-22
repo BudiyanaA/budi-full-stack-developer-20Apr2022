@@ -17,6 +17,7 @@ function Basic({ user, mutateUser }) {
     photos: user?.isLoggedIn && user.photos,
     fullname: user?.isLoggedIn && user.fullname,
     age: user?.isLoggedIn && user.age,
+    public: user?.isLoggedIn && user.public,
   });
 
   const handleChange = (e) => {
@@ -52,6 +53,10 @@ function Basic({ user, mutateUser }) {
     setThumbnail(
       'https://firebasestorage.googleapis.com/v0/b/madava-project.appspot.com/o/public%2Fimages%2Fthumbnail-default.jpg?alt=media&token=550b5331-54db-4fea-91b7-963bb1054b50'
     );
+
+    if (user && user.photos) {
+      setThumbnail(user.photos);
+    }
   }, []);
 
   const handleSubmit = async (e) => {
@@ -180,6 +185,19 @@ function Basic({ user, mutateUser }) {
             </div>
           </div>
           {/* <div class="flex flex-col mb-5">
+            <label class="inline-flex items-center mt-3">
+              <input 
+                id="public"
+                type="checkbox" 
+                name="public"
+                class="form-checkbox h-5 w-5 text-gray-600"
+                value={fields.public}
+                onChange={handleChange} 
+              />
+              <span class="ml-2 text-gray-700">Make Public?</span>
+            </label>
+          </div> */}
+          {/* <div class="flex flex-col mb-5">
             <label
               for="email"
               class="mb-1 text-xs tracking-wide text-gray-600"
@@ -219,6 +237,7 @@ function Basic({ user, mutateUser }) {
               />
             </div>
           </div> */}
+
           <div class="flex w-full">
             <button
               type="submit"
