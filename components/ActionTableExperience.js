@@ -6,7 +6,6 @@ import {
   faPencil,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-
 import PropTypes from 'prop-types';
 
 function ActionTableExperience(props) {
@@ -31,8 +30,8 @@ function ActionTableExperience(props) {
             <div className='px-1 py-1 '>
               <MenuCustom.Item>
                 {({ active }) => (
-                  <a
-                    href={onView}
+                  <button
+                    onClick={onView}
                     className={`${
                       active ? 'bg-blue-400 text-white' : 'text-gray-900'
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
@@ -51,7 +50,7 @@ function ActionTableExperience(props) {
                       />
                     )}
                     Lihat
-                  </a>
+                  </button>
                 )}
               </MenuCustom.Item>
               <MenuCustom.Item>

@@ -98,3 +98,55 @@ export const deleteExperience = async (req, res, next) => {
     next(err);
   }
 };
+
+export const editExperience = async (req, res, next) => {
+  // await validationHandler(
+  //   req,
+  //   res,
+  //   validations([
+  //     check('nama_perumahan', 'Nama Perumahan is required!').notEmpty(),
+  //     check('id_kavling', 'Kavling ID is required!').notEmpty(),
+  //     check('cluster', 'Nama Cluster is required!').notEmpty(),
+  //     check('type', 'Nama Tipe is required!').notEmpty(),
+  //     check('blok', 'Nama Blok is required!').notEmpty(),
+  //     check('no_kavling', 'No. Rumah is required!').notEmpty(),
+  //     check('ipl', 'Fill bill with array object').isArray(),
+  //   ])
+  // );
+
+  const { 
+    company, 
+    title, 
+    start_date,
+    end_date,
+    description, 
+  } = req.body;
+  const { index } = req.query;
+  const user = req.session.get('user');
+
+  try {
+    const userRef = await firestore.collection('users').doc(user.uid);
+    const userGet = await userRef.get();
+    const userData = await userGet.data();
+
+    let list = [...userData.experience];
+    list[index] = {
+      company, 
+      title, 
+      start_date,
+      end_date,
+      description, 
+    }
+
+    await userRef.update({
+      experience: list,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: `Experience has been updated!`,
+    });
+  } catch (err) {
+    next(err);
+  }
+};

@@ -4,10 +4,18 @@ import {
   faEllipsisVertical
 } from "@fortawesome/free-solid-svg-icons"
 
-function TableExperience ({ experience, onDelete }) {
+function TableExperience ({ experience, onDelete, onView, onEdit }) {
   
   const handleDelete = (index) => {
     return onDelete(index);
+  };
+
+  const handleView = (exp) => {
+    return onView(exp);
+  };
+
+  const handleEdit = (exp, index) => {
+    return onEdit(exp, index);
   };
 
   return (
@@ -68,7 +76,8 @@ function TableExperience ({ experience, onDelete }) {
                 </td>
                 <td className='px-6 py-4 whitespace-nowrap text-right'>
                   <ActionTableExperience
-                    // onEdit={() => (handleEdit(grade))}
+                    onView={() => handleView(exp)}
+                    onEdit={() => handleEdit(exp, index)}
                     onDelete={() => handleDelete(index)}
                   >
                     <FontAwesomeIcon className='text-gray-500 w-5 h-5 cursor-pointer' icon={faEllipsisVertical} />

@@ -6,6 +6,7 @@ import {
   getAllExperience,
   createExperience,
   deleteExperience,
+  editExperience,
 } from '../../controllers/routes/experience';
 
 export default withSession(
@@ -13,4 +14,5 @@ export default withSession(
     .get(getAllExperience)
     .post(createExperience)
     .delete(deleteExperience)
+    .put(editExperience)
 );

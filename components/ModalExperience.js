@@ -22,6 +22,7 @@ function ModalExperience({
   type,
   mutate,
   experience,
+  index,
 }) {
   const [fields, setFields] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,16 +85,70 @@ function ModalExperience({
     }
   }
 
+  const updateExperience = async () => {
+    setIsLoading(true);
+
+    try {
+      const res = await fetcher(`/api/experience?index=${index}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fields),
+      });
+
+      setResponse({
+        type: 'success',
+        message: res.message,
+      });
+
+      mutate(`/api/experience`);
+      setIsLoading(false);
+      
+    } catch (err) {
+      console.error(err);
+
+      if (!err.data.success && err.data.errors) {
+        setFormErrors(err.data.errors);
+
+        return setIsLoading(false);
+      }
+
+      setResponse({
+        type: 'error',
+        message: err.data.error.message,
+      });
+
+      return setIsLoading(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setResponse(initialResponse);
     // setFormErrors(initialState);
     setIsLoading(true);
-    return await addExperience();
+
+    if (type === 'add') {
+      return await addExperience();
+    }
+
+    return await updateExperience();
   };
 
-  const titleModal = "Add Experience";
-  
+  const titleModal =
+  (type === 'view' &&
+    !response.type &&
+    !isLoading &&
+    'View Experience') ||
+  (type === 'add' &&
+    !response.type &&
+    !isLoading &&
+    'Add Experience') ||
+  (type === 'edit' &&
+    !response.type &&
+    !isLoading &&
+    'Edit Experience') ||
+  (response.type === 'error' && isLoading && '') ||
+  (response.type === 'success' && isLoading && '');
 
   return (
     <Modal open={open} onClose={onClose} title={titleModal} align='center'>
@@ -142,6 +197,7 @@ function ModalExperience({
                 value={fields.company}
                 onChange={handleChange}
                 required={true}
+                disabled={type == 'view'}
               />
             </div>
           </div>
@@ -165,6 +221,7 @@ function ModalExperience({
                 value={fields.title}
                 onChange={handleChange}
                 required={true}
+                disabled={type == 'view'}
               />
             </div>
           </div>
@@ -188,6 +245,7 @@ function ModalExperience({
                 value={fields.start_date}
                 onChange={handleChange}
                 required={true}
+                disabled={type == 'view'}
               />
             </div>
           </div>
@@ -210,6 +268,7 @@ function ModalExperience({
                 placeholder="Enter your email"
                 value={fields.end_date}
                 onChange={handleChange}
+                disabled={type == 'view'}
               />
             </div>
           </div>
@@ -233,6 +292,7 @@ function ModalExperience({
                 value={fields.description}
                 onChange={handleChange}
                 required={true}
+                disabled={type == 'view'}
               />
             </div>
           </div>
