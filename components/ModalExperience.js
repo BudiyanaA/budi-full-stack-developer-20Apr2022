@@ -199,32 +199,32 @@ function ModalExperience({
       { isLoading ? (
         <div className={`text-gray-500 text-center mb-2`}>Please wait...</div>
       ) : !response.type ? (
-        <div class="mt-10">
+        <div className="mt-10">
         <form onSubmit={handleSubmit}>
-          {/* <div class="flex flex-col mb-5">
+          {/* <div className="flex flex-col mb-5">
             <label
-              for="email"
-              class="mb-1 text-xs tracking-wide text-gray-600"
+              htmlFor="email"
+              className="mb-1 text-xs tracking-wide text-gray-600"
             >
               Logo:
             </label>
-            <div class="relative">
-              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <i class="fas fa-at text-blue-500"></i>
+            <div className="relative">
+              <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <i className="fas fa-at text-blue-500"></i>
               </div>
               <input
                 id="email"
                 type="file"
                 name="email"
-                class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                 placeholder="Enter your email"
               />
             </div>
           </div> */}
-          <div class="flex flex-col mb-5">
+          <div className="flex flex-col mb-5">
             <label
-              for="email"
-              class="mb-1 text-xs tracking-wide text-gray-600"
+              htmlFor="email"
+              className="mb-1 text-xs tracking-wide text-gray-600"
             >
               Logo:
             </label>
@@ -244,15 +244,15 @@ function ModalExperience({
               )}
             </div>
             { type == 'add' && (
-              <div class="relative">
-                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                  <i class="fas fa-portrait text-blue-500"></i>
+              <div className="relative">
+                <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                  <i className="fas fa-portrait text-blue-500"></i>
                 </div>
                 <input
                   id="logo"
                   type="file"
                   name="logo"
-                  class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                  className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                   placeholder="Enter your email"
                   onChange={handleChangeFile}
                   ref={ref}
@@ -261,22 +261,22 @@ function ModalExperience({
               </div>
             )}
           </div>
-          <div class="flex flex-col mb-5">
+          <div className="flex flex-col mb-5">
             <label
-              for="email"
-              class="mb-1 text-xs tracking-wide text-gray-600"
+              htmlFor="email"
+              className="mb-1 text-xs tracking-wide text-gray-600"
             >
               Company:
             </label>
-            <div class="relative">
-              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <i class="fas fa-at text-blue-500"></i>
+            <div className="relative">
+              <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <i className="fas fa-at text-blue-500"></i>
               </div>
               <input
                 id="company"
                 type="text"
                 name="company"
-                class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                 placeholder="Enter your company"
                 value={fields.company}
                 onChange={handleChange}
@@ -285,22 +285,22 @@ function ModalExperience({
               />
             </div>
           </div>
-          <div class="flex flex-col mb-5">
+          <div className="flex flex-col mb-5">
             <label
-              for="email"
-              class="mb-1 text-xs tracking-wide text-gray-600"
+              htmlFor="email"
+              className="mb-1 text-xs tracking-wide text-gray-600"
             >
               Title:
             </label>
-            <div class="relative">
-              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <i class="fas fa-at text-blue-500"></i>
+            <div className="relative">
+              <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <i className="fas fa-at text-blue-500"></i>
               </div>
               <input
                 id="title"
                 type="text"
                 name="title"
-                class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                 placeholder="Enter your Job Title"
                 value={fields.title}
                 onChange={handleChange}
@@ -309,22 +309,22 @@ function ModalExperience({
               />
             </div>
           </div>
-          <div class="flex flex-col mb-5">
+          <div className="flex flex-col mb-5">
             <label
-              for="email"
-              class="mb-1 text-xs tracking-wide text-gray-600"
+              htmlFor="email"
+              className="mb-1 text-xs tracking-wide text-gray-600"
             >
               Start Date:
             </label>
-            <div class="relative">
-              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <i class="fas fa-at text-blue-500"></i>
+            <div className="relative">
+              <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <i className="fas fa-at text-blue-500"></i>
               </div>
               <input
                 id="start_date"
                 type="date"
                 name="start_date"
-                class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                 placeholder="Enter your email"
                 value={fields.start_date}
                 onChange={handleChange}
@@ -333,22 +333,22 @@ function ModalExperience({
               />
             </div>
           </div>
-          <div class="flex flex-col mb-5">
+          <div className="flex flex-col mb-5">
             <label
-              for="email"
-              class="mb-1 text-xs tracking-wide text-gray-600"
+              htmlFor="email"
+              className="mb-1 text-xs tracking-wide text-gray-600"
             >
               End Date:
             </label>
-            <div class="relative">
-              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <i class="fas fa-at text-blue-500"></i>
+            <div className="relative">
+              <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <i className="fas fa-at text-blue-500"></i>
               </div>
               <input
                 id="end_date"
                 type="date"
                 name="end_date"
-                class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                 placeholder="Enter your email"
                 value={fields.end_date}
                 onChange={handleChange}
@@ -356,22 +356,22 @@ function ModalExperience({
               />
             </div>
           </div>
-          <div class="flex flex-col mb-5">
+          <div className="flex flex-col mb-5">
             <label
-              for="email"
-              class="mb-1 text-xs tracking-wide text-gray-600"
+              htmlFor="email"
+              className="mb-1 text-xs tracking-wide text-gray-600"
             >
               Description:
             </label>
-            <div class="relative">
-              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <i class="fas fa-at text-blue-500"></i>
+            <div className="relative">
+              <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <i className="fas fa-at text-blue-500"></i>
               </div>
               <input
                 id="description"
                 type="text"
                 name="description"
-                class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
                 placeholder="Enter your job description"
                 value={fields.description}
                 onChange={handleChange}
@@ -380,12 +380,12 @@ function ModalExperience({
               />
             </div>
           </div>
-          <div class="flex w-full">
+          <div className="flex w-full">
             <button
               type="submit"
-              class="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-500 hover:bg-blue-600 rounded-2xl py-2 w-full transition duration-150 ease-in"
+              className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-500 hover:bg-blue-600 rounded-2xl py-2 w-full transition duration-150 ease-in"
             >
-              <span class="mr-2 uppercase">Save</span>
+              <span className="mr-2 uppercase">Save</span>
             </button>
           </div>
         </form>
